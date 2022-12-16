@@ -4,7 +4,7 @@ import string
 import pandas as pd 
 
 
-def player_basic_info():
+def team_stats():
     """returns a pandas data frame of players' basic info from the website
     whoscored.com. The players all started playing after 2000.
     """
@@ -39,9 +39,9 @@ def player_basic_info():
                 url += str(j + k) + "/TeamStatistics"
                 print(url)
         
-            page_request = requests.get(url)
-            soup = BeautifulSoup(page_request.text,"lxml")
-            summary = soup.find("table", {"class": "grid"})
+                page_request = requests.get(url)
+                soup = BeautifulSoup(page_request.text,"lxml")
+                summary = soup.find("table", {"class": "grid"})
             # print(soup)
     #     if table:
     #         table_body = table.find('tbody')
@@ -70,3 +70,25 @@ def player_basic_info():
     #             if int(active_from) > 1989:
     #                 players.append(player_entry)
     # return pd.DataFrame(players)
+
+def attempt():
+    url = "https://fr.whoscored.com/Regions/250/Tournaments/12/Seasons/9086/Stages/20961/TeamStatistics/Europe-Champions-League-2022-2023"
+    proxy = {
+    'http': "indianajones09%40live.de:muck09HA@au796.nordvpn.com",
+    'https': "indianajones09%40live.de:muck09HA@au796.nordvpn.com"
+    }
+    page_request = requests.get(url, proxies=proxy)
+    soup = BeautifulSoup(page_request.text,"lxml")
+    print(soup)
+    summary = soup.find("tbody", {"id": "top-team-stats-summary-content"})
+    print(summary)
+
+def main():
+    attempt()
+
+if __name__=="__main__":
+    main()
+
+
+
+    
