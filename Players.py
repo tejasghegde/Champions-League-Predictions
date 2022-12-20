@@ -73,11 +73,13 @@ def team_stats():
 
 def attempt():
     url = "https://fr.whoscored.com/Regions/250/Tournaments/12/Seasons/9086/Stages/20961/TeamStatistics/Europe-Champions-League-2022-2023"
-    proxy = {
-    'http': "indianajones09%40live.de:muck09HA@au796.nordvpn.com",
-    'https': "indianajones09%40live.de:muck09HA@au796.nordvpn.com"
-    }
-    page_request = requests.get(url, proxies=proxy)
+    # proxy = {
+    # 'http': "indianajones09%40live.de:muck09HA@au796.nordvpn.com",
+    # 'https': "indianajones09%40live.de:muck09HA@au796.nordvpn.com"
+    # }
+    # page_request = requests.get(url, proxies=proxy)
+    page_request = requests.get(url)
+
     soup = BeautifulSoup(page_request.text,"lxml")
     print(soup)
     summary = soup.find("tbody", {"id": "top-team-stats-summary-content"})
